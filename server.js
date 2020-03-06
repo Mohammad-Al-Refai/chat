@@ -2,6 +2,7 @@ let express=require("express")
 let app=express()
 let WS=require("express-ws")(app)
 app.use(express.static(__dirname+"/view"))
+let port=process.env.PORT||3000
 
 app.get("/",(req,res)=>{
     res.render(__dirname+"/view/index.html")
@@ -30,4 +31,4 @@ app.ws('/chat', function(ws, req) {
 
 
 
-app.listen(3000)
+app.listen(port)
