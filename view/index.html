@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="msg"><button id="send">Send</button>
+    <br>
+    <div id="list">
+    </div>
+
+
+<script>
+let msg=document.getElementById("msg")
+let list=document.getElementById("list")
+let Send=document.getElementById("send")
+let name=prompt("Enter Name:")
+
+
+
+let ws=new WebSocket("ws://chat-test52353.herokuapp.com/chat")
+ws.onopen=()=>{
+    ws.send(JSON.stringify({
+        type:"name",
+        data:name
+    }))
+}
+ws.onmessage=(msg)=>{
+let data=JSON.parse(msg.data)
+console.log(data)
+let item=`<div><span>${data.name}</span><span>:</span>${data.msg}<span></span></div>`
+list.innerHTML+=item
+}
+Send.addEventListener("click",e=>{
+ws.send(JSON.stringify({
+    type:"msg",
+    msg:msg.value
+}))
+})
+
+
+</script>
+
+</body>
+</html>
