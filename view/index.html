@@ -23,7 +23,7 @@ let name=prompt("Enter Name:")
 
 
 
-let ws=new WebSocket("ws://localhost:3000/chat")
+let ws=new WebSocket("wsschat-test52353.herokuapp.com/chat")
 ws.onopen=()=>{
     ws.send(JSON.stringify({
         type:"name",
