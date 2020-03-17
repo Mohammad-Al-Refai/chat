@@ -16,7 +16,7 @@ app.ws("/chat", function(ws, req) {
       if (A.personName ===V.for) {
         A.send(
           JSON.stringify({
-            name: ws.personName,,
+            name: ws.personName,
             msg: V.msg
           })
         );
