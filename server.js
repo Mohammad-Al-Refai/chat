@@ -5,6 +5,7 @@ app.use(express.static(__dirname + "/view"));
 let port=process.env.PORT||3000
 
 app.ws("/chat", function(ws, req) {
+  ws.send('Welcome')
   ws.on("message", function(msg) {
     let V = JSON.parse(msg);
     if (V.type == "name") {
