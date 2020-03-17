@@ -6,7 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    <input id="msg"><button id="send">Send</button>
+    <input id="for" placeholder="For">
+    <input id="msg" placeholder="Message"><button id="send">Send</button>
     <br>
     <div id="list">
     </div>
@@ -14,13 +15,15 @@
 
 <script>
 let msg=document.getElementById("msg")
+let forA=document.getElementById("for")
+
 let list=document.getElementById("list")
 let Send=document.getElementById("send")
 let name=prompt("Enter Name:")
 
 
 
-let ws=new WebSocket("wss://chat-test52353.herokuapp.com/chat")
+let ws=new WebSocket("ws://localhost:3000/chat")
 ws.onopen=()=>{
     ws.send(JSON.stringify({
         type:"name",
@@ -36,7 +39,8 @@ list.innerHTML+=item
 Send.addEventListener("click",e=>{
 ws.send(JSON.stringify({
     type:"msg",
-    msg:msg.value
+    msg:msg.value,
+    for:forA.value
 }))
 })
 
