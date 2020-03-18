@@ -8,13 +8,13 @@ app.ws("/chat", function(ws, req) {
   ws.send('Welcome')
   ws.on("message", function(msg) {
     ws.send('Welcome')
-    let V = JSON.parse(msg);
-    if (V.type == "name") {
-      ws.personName = V.data;
-    }
-    WS.getWss().clients.forEach(function client(A) {
+//     let V = JSON.parse(msg);
+//     if (V.type == "name") {
+//       ws.personName = V.data;
+//     }
+ //   WS.getWss().clients.forEach(function client(A) {
     //   console.log("CLIENTS:", A.personName);
-        A.send("HI")
+//        A.send("HI")
 //       if (A.personName ===V.for) {
 //         A.send(
 //           JSON.stringify({
@@ -26,7 +26,7 @@ app.ws("/chat", function(ws, req) {
 //       }else{
 //           console.log("TRG Client:",V.for)
 //       }
-    });
+//    });
   });
 });
 
