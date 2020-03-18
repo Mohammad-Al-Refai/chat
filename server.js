@@ -6,14 +6,13 @@ let port=process.env.PORT||3000
 
 app.ws("/chat", function(ws, req) {
   ws.on("message", function(msg) {
-     ws.send("Thanks")
+   
     let V = JSON.parse(msg);
     if (V.type == "name") {
       ws.personName = V.data;
     }
     WS.getWss().clients.forEach(function client(A) {
-    //   console.log("CLIENTS:", A.personName);
-
+  
       if (A.personName ===V.for) {
         A.send(
           JSON.stringify({
